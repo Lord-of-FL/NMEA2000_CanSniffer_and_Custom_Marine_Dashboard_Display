@@ -1,0 +1,31 @@
+Step 1
+sudo mkdir -p /etc/systemd/system
+
+Step 2
+sudo nano /etc/systemd/system/button_listener.service
+
+Step 3
+[Unit]
+Description=GPIOZero Button Listener Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/mikestrohofer/Scripts/Button_listener.py
+WorkingDirectory=/home/mikestrohofer/Scripts
+User=mikestrohofer
+Group=mikestrohofer
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+Step 4
+
+sudo systemctl daemon-reload
+
+sudo systemctl enable button_listener.service
+
+sudo systemctl start button_listener.service
+
+sudo systemctl status button_listener.service
