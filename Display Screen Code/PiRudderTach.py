@@ -396,3 +396,4 @@ subprocess.Popen(["/usr/bin/wf-panel-pi"])
 close_serial()
 pygame.quit()
 GPIO.cleanup()
+
